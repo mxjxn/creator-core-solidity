@@ -87,3 +87,14 @@ When deploying new contracts, please update this file with:
 - Deployment artifacts are saved in `broadcast/` directory
 - Sensitive values are cached in `cache/` directory
 
+## Understanding the Contracts
+
+For a comprehensive explanation of how these contracts work, including:
+- Proxy pattern architecture
+- Extension system
+- Minting mechanisms
+- Royalty system
+- Transfer control
+
+See [ARCHITECTURE.md](./ARCHITECTURE.md)
+

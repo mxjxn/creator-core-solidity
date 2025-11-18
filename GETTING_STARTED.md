@@ -259,4 +259,5 @@ contract MyMintingExtension {
 - Read the [Deployment Guide](./DEPLOYMENT_GUIDE.md) for detailed deployment instructions
 - Check the [Integration Guide](./INTEGRATION_GUIDE.md) for integrating with marketplaces and other systems
 - Explore [extension examples](https://github.com/manifoldxyz/creator-core-extensions-solidity) for advanced functionality
+- Understand the [Architecture](./ARCHITECTURE.md) to learn how the contracts work internally
 

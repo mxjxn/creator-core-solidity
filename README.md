@@ -19,6 +19,8 @@ Go [here](https://docs.manifold.xyz/v/manifold-for-developers/manifold-creator-a
 
 ## Architecture Overview
 
+> **📖 For a detailed explanation of how the contracts work, see [ARCHITECTURE.md](./ARCHITECTURE.md)**
+
 The Creator Core contracts are built with a modular architecture that separates concerns into distinct layers:
 
 ### Core Components

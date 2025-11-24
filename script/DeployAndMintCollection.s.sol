@@ -16,9 +16,9 @@ import "openzeppelin/proxy/transparent/ProxyAdmin.sol";
  *      - CONTRACT_SYMBOL: Collection symbol (default: "RT")
  *      - MINT_TO: Address to receive all NFTs (optional, defaults to derived address)
  *      - NFT_COUNT: Number of NFTs to mint (default: 100)
- *      - PRIVATE_KEY: Deployer private key (optional if MNEMONIC is set)
- *      - MNEMONIC: Mnemonic phrase to derive private key (optional)
+ *      - MNEMONIC: Mnemonic phrase to derive private key (optional, preferred over PRIVATE_KEY)
  *      - MNEMONIC_INDEX: Index for mnemonic derivation (default: 0)
+ *      - PRIVATE_KEY: Deployer private key (optional, used if MNEMONIC is not set)
  */
 contract DeployAndMintCollection is Script {
     function run() external {
@@ -36,6 +36,8 @@ contract DeployAndMintCollection is Script {
         } catch {
             deployerPrivateKey = vm.envUint("PRIVATE_KEY");
             derivedAddress = vm.addr(deployerPrivateKey);
+            console.log("Using PRIVATE_KEY from environment");
+            console.log("Deployer address:", derivedAddress);
         }
 
         // Read configuration from environment

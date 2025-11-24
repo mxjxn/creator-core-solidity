@@ -48,7 +48,7 @@ if [ -n "$PRIVATE_KEY" ]; then
     print_info "Found PRIVATE_KEY"
 fi
 
-# Derive private key from mnemonic if provided
+# Derive private key from mnemonic if provided, otherwise use PRIVATE_KEY
 if [ -n "$MNEMONIC" ]; then
     # Use MNEMONIC_INDEX if set, otherwise default to 0
     MNEMONIC_INDEX=${MNEMONIC_INDEX:-0}
@@ -75,9 +75,15 @@ if [ -n "$MNEMONIC" ]; then
     fi
 elif [ -z "$PRIVATE_KEY" ]; then
     print_error "Either PRIVATE_KEY or MNEMONIC environment variable must be set"
-    print_info "Set PRIVATE_KEY with: export PRIVATE_KEY=your_private_key"
-    print_info "Or set MNEMONIC with: export MNEMONIC=\"your twelve word seed phrase\""
+    print_info "Set MNEMONIC with: export MNEMONIC=\"your twelve word seed phrase\""
+    print_info "Or set PRIVATE_KEY with: export PRIVATE_KEY=your_private_key"
     exit 1
+else
+    print_info "Using PRIVATE_KEY from environment"
+    DERIVED_ADDRESS=$(cast wallet address $PRIVATE_KEY 2>/dev/null || echo "")
+    if [ -n "$DERIVED_ADDRESS" ]; then
+        print_info "  Address: $DERIVED_ADDRESS"
+    fi
 fi
 
 # Set default RPC URL for Base Sepolia testnet

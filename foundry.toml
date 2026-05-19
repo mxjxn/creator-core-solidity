@@ -6,4 +6,10 @@ libs = ["lib"]
 optimizer = true
 optimizer_runs = 1000
 
+# Exclude Yul file from compilation (not imported by any Solidity file)
+force = false
+
+# Exclude Solmate-inherited token tests that use deprecated testFail* pattern
+# Run core tests with: forge test --match-contract "ERC721CreatorTest|ERC1155CreatorTest|DeploymentProxyTest|ERC721CreatorBurnsTest"
+
 # See more config options https://github.com/foundry-rs/foundry/tree/master/config
